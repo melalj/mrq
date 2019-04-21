@@ -29,6 +29,7 @@ REDIS_TIMEOUT = 30 #Redis connection pool timeout to wait for an available conne
 
 """General MrQ settings
 """
+GEVENT_POSTGRES = False #Patch postgres to support greenlets.Defaults to False.
 TRACE_GREENLETS = False #Collect stats about each greenlet execution time and switches.Defaults to False.
 TRACE_MEMORY = False #Collect stats about memory for each task. Incompatible with `GREENLETS` > 1. Defaults to False.
 TRACE_IO = True #Collect stats about all I/O operations.Defaults to True.

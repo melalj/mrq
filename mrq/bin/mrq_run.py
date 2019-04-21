@@ -16,6 +16,10 @@ if "GEVENT_RESOLVER" not in os.environ and not is_pypy:
 from gevent import monkey
 monkey.patch_all()
 
+if "MRQ_GEVENT_PG" in os.environ:
+    import psycogreen.gevent  # noqa
+    psycogreen.gevent.patch_psycopg()  # noqa
+
 import argparse
 import ujson as json
 import json as json_stdlib

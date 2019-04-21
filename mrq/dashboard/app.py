@@ -2,13 +2,17 @@ from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
 from future.utils import iteritems
+import os
 from gevent import monkey
 monkey.patch_all()
+
+if "MRQ_GEVENT_PG" in os.environ:
+    import psycogreen.gevent  # noqa
+    psycogreen.gevent.patch_psycopg()  # noqa
 
 from flask import Flask, request, render_template
 
 import time
-import os
 import sys
 import re
 from bson import ObjectId
